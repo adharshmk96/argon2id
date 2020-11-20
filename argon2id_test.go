@@ -12,7 +12,7 @@ func TestCreateHash(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	hash1, err := CreateHash("pa$$word", DefaultParams)
+	hash1, err := GeneratePasswordHash("pa$$word", DefaultConfig)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -21,7 +21,7 @@ func TestCreateHash(t *testing.T) {
 		t.Errorf("hash %q not in correct format", hash1)
 	}
 
-	hash2, err := CreateHash("pa$$word", DefaultParams)
+	hash2, err := GeneratePasswordHash("pa$$word", DefaultConfig)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -32,12 +32,12 @@ func TestCreateHash(t *testing.T) {
 }
 
 func TestComparePasswordAndHash(t *testing.T) {
-	hash, err := CreateHash("pa$$word", DefaultParams)
+	hash, err := GeneratePasswordHash("pa$$word", DefaultConfig)
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	match, err := ComparePasswordAndHash("pa$$word", hash)
+	match, err := ComparePasswordHash("pa$$word", hash)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -46,7 +46,7 @@ func TestComparePasswordAndHash(t *testing.T) {
 		t.Error("expected password and hash to match")
 	}
 
-	match, err = ComparePasswordAndHash("otherPa$$word", hash)
+	match, err = ComparePasswordHash("otherPa$$word", hash)
 	if err != nil {
 		t.Fatal(err)
 	}
