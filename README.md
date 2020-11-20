@@ -1,10 +1,13 @@
-# Argon2id
+# Go Password
+A simple password hashing utlity collection. 
+
+## Argon2id
 
 This package provides a convenience wrapper around Go's [argon2](https://pkg.go.dev/golang.org/x/crypto/argon2?tab=doc) implementation, making it simpler to securely hash and verify passwords using Argon2.
 
 It enforces use of the Argon2id algorithm variant and cryptographically-secure random salts.
 
-## Usage
+### Usage
 
 ```go
 package main
@@ -38,7 +41,7 @@ func main() {
 }
 ```
 
-### Changing the Parameters
+#### Changing the Parameters
 
 When creating a hash you can and should configure the parameters to be suitable for the environment that the code is running in. The parameters are:
 
